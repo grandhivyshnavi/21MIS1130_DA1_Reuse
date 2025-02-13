@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SDG Goal 2 - 21MIS1130</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background: url('cover.jpeg') center/cover;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+        }
+
+        .content-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background: white;
+        }
+
+        .content-left {
+            width: 45%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .content-right {
+            width: 50%;
+            font-size: 1.2rem;
+            text-align: justify;
+        }
+
+        .scroll-container {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .scroll-icon {
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: #E5A400;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-text {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .navbar {
+            background: #E5A400;
+        }
+
+        .navbar a {
+            color: white;
+        }
+
+        .content-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .tab-content {
+            padding-left: 100px;
+            text-align: justify;
+            max-width: 90%;
+            font-size: 17px;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .copy-btn {
+            margin-top: 10px;
+        }
+
+        /* Dark Grey Navbar for Tabs */
+        .nav-tabs .nav-link {
+            color: white !important;
+            /* Makes text white */
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #343a40 !important;
+            /* Dark grey for active tab */
+            border-color: #454d55 !important;
+        }
+
+        .nav-tabs {
+            justify-content: start;
+            padding-left: 100px;
+            /* Adjust this value as needed */
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            /* Occupy full width */
+            margin: 0;
+            /* Remove margins */
+            padding: 20px;
+            /* Adjust padding as needed */
+        }
+
+        .text-content {
+            width: 100%;
+            /* Full width */
+            text-align: justify;
+        }
+
+        .image-content {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* Centers images */
+            gap: 15px;
+            /* Space between images */
+            margin-top: 20px;
+        }
+
+        .image-content img {
+            max-width: 30%;
+            /* Reduces image width */
+            height: auto;
+            border-radius: 10px;
+            /* Optional rounded corners */
+        }
+
+        .target-box {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .target-img {
+            width: 100px;
+            /* Adjust as needed */
+            height: 130px;
+            object-fit: cover;
+            position: absolute;
+            top: 10px;
+            /* Keeps it at the top */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .target-box p {
+            margin-top: 150px;
+            font-family: Arial, sans-serif;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
+            /* Makes all columns stretch equally */
+        }
+
+        #contact {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        a,
+        li,
+        button,
+        .nav-link,
+        .tab-content,
+        .content-section,
+        .content-left,
+        .content-right {
+            font-family: Arial, sans-serif !important;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+            /* Bootstrap green color */
+            border-color: #28a745;
+            color: white;
+            /* White text */
+        }
+
+        .btn-green:hover {
+            background-color: #218838;
+            /* Darker green on hover */
+            border-color: #1e7e34;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="sdg1.png" alt="SDG Icon" width="50" height="50" class="d-inline-block align-text-top me-2">
+                SDG Goal 2</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#content-section">Goal 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#references">References</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="scroll-container" onclick="scrollToContent()">
+            <div class="scroll-icon">&#x25BC;</div>
+            <div class="scroll-text">Find Out More</div>
+        </div>
+    </section>
+
+    <section class="content-section" id="content-section">
+        <div class="content-left">
+            END HUNGER, ACHIEVE FOOD SECURITY AND IMPROVED NUTRITION AND PROMOTE SUSTAINABLE AGRICULTURE.
+        </div>
+        <div class="content-right">
+            Hunger is the leading cause of death in the world. Our planet has provided us with tremendous resources, but
+            unequal access and inefficient handling leave millions of people malnourished. Despite progress in reducing
+            undernourishment through economic growth and agricultural advancements, hunger and malnutrition remain
+            critical
+            global issues, exacerbated by environmental degradation, climate change, conflict, and inequality. As of
+            2022,
+            735 million people faced chronic hunger, and 2.4 billion experienced moderate to severe food insecurity. The
+            Sustainable Development Goals (SDGs) aim to end all forms of hunger and malnutrition by 2030 through
+            sustainable
+            agricultural practices, supporting small-scale farmers, improving access to nutritious food, and fostering
+            international cooperation. Achieving this goal will require collective action to ensure food security for
+            all.
+        </div>
+    </section>
+
+    <ul class="nav nav-tabs bg-dark w-100" id="goal2Tabs">
+        <li class="nav-item">
+            <a class="nav-link text-white active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview"
+                role="tab" aria-controls="overview" aria-selected="true">Overview</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="schemes-tab" data-bs-toggle="tab" data-bs-target="#schemes" role="tab"
+                aria-controls="schemes" aria-selected="false">Schemes</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="targets-tab" data-bs-toggle="tab" data-bs-target="#targets" role="tab"
+                aria-controls="targets" aria-selected="false">Targets</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" id="thingstodo-tab" data-bs-toggle="tab" data-bs-target="#thingstodo"
+                role="tab" aria-controls="thingstodo" aria-selected="false">Things to Do</a>
+        </li>
+    </ul>
+
+
+
+    <div class="tab-content mt-3">
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+            <div class="content-container">
+                <div class="text-content">
+                    <p>Goal 2 aims to end hunger, achieve food security, and promote sustainable agriculture.
+                        Goal 2 of the Sustainable Development Goals (SDGs) aims to eliminate hunger, achieve food
+                        security, and promote sustainable agriculture by 2030. Despite significant progress in reducing
+                        undernourishment, millions still suffer from chronic hunger and malnutrition, driven by
+                        environmental degradation, climate change, conflict, and inequality. The global food crisis has
+                        worsened in recent years, with 735 million people experiencing chronic hunger and 2.4 billion
+                        facing food insecurity as of 2022.
+
+                        Achieving this goal requires a multi-faceted approach, including supporting small-scale farmers,
+                        ensuring equitable access to resources, investing in agricultural technology, and promoting
+                        sustainable food production systems. International cooperation is crucial in addressing food
+                        insecurity and malnutrition, particularly in vulnerable regions. Organizations like UNICEF, WHO,
+                        and the World Bank play key roles in monitoring progress and implementing initiatives to combat
+                        hunger.
+
+                        Ending hunger is essential for sustainable development, as malnutrition affects health,
+                        productivity, and economic stability. A collective global effort is required to create resilient
+                        food systems, improve nutrition, and ensure that everyone has access to safe and nutritious food
+                        year-round.
+                    </p>
+                    <p><b>How many people are hungry?</b><br>
+                        It is projected that more than 600 million people worldwide will be facing hunger in 2030,
+                        highlighting the immense challenge of achieving the zero hunger target.
+
+                        People experiencing moderate food insecurity are typically unable to eat a healthy, balanced
+                        diet on a regular basis because of income or other resource constraints.</p>
+                    <p><b>Why are there so many hungry people?</b><br>
+                        Shockingly, the world is back at hunger levels not seen since 2005, and food prices remain
+                        higher in more countries than in the period 2015–2019. Along with conflict, climate shocks, and
+                        rising cost of living, civil insecurity and declining food production have all contributed to
+                        food scarcity and high food prices.
+
+                        Investment in the agriculture sector is critical for reducing hunger and poverty, improving food
+                        security, creating employment and building resilience to disasters and shocks.</p>
+                    <p><b>Why should I care?</b><br>
+                        We all want our families to have enough food to eat what is safe and nutritious. A world with
+                        zero hunger can positively impact our economies, health, education, equality and social
+                        development.
+
+                        It’s a key piece of building a better future for everyone. Additionally, with hunger limiting
+                        human development, we will not be able to achieve the other sustainable development goals such
+                        as education, health and gender equality.</p>
+                    <p><b>How can we achieve Zero Hunger?</b><br>
+                        Food security requires a multi-dimensional approach – from social protection to safeguard safe
+                        and nutritious food especially for children to transforming food systems to achieve a more
+                        inclusive and sustainable world. There will need to be investments in rural and urban areas and
+                        in social protection so poor people have access to food and can improve their livelihoods.</p>
+                    <p><b>What can we do to help?</b><br>
+                        You can make changes in your own life—at home, at work and in the community—by supporting local
+                        farmers or markets and making sustainable food choices, supporting good nutrition for all, and
+                        fighting food waste.
+
+                        You can also use your power as a consumer and voter, demanding businesses and governments make
+                        the choices and changes that will make Zero Hunger a reality. Join the conversation, whether on
+                        social media platforms or in your local communities.</p>
+                </div>
+                <div class="image-content">
+                    <img src="overview.png" alt="Sustainable Agriculture">
+                    <img src="zerohunger.png" alt="Sustainable Agriculture" style="max-width:50%">
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="schemes" role="tabpanel" aria-labelledby="schemes-tab">
+            <h1 class="text-center mt-5" style="color:#E5A400">Indian Government Schemes towards ZERO HUNGER</h1><br>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card w-100 mb-3">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title fs-1"><a
+                                                href="https://pib.gov.in/PressReleasePage.aspx?PRID=1910409"
+                                                target="_blank" class="text-decoration-none text-black">
+                                                POSHAN Abhiyaan (National Nutrition Mission)
+                                            </a></h3>
+                                        <p class="card-text">
+                                            <b style="font-size:18px">Launched:</b> March 2018 by Prime Minister
+                                            Narendra Modi
+                                            in Jhunjhunu,
+                                            Rajasthan.<br>
+                                            <b style="font-size:18px">Ministry:</b> Ministry of Women and Child
+                                            Development
+                                            (MWCD).<br>
+                                            <b style="font-size:18px">Objective:</b> To reduce malnutrition and achieve
+                                            a
+                                            malnutrition-free India
+                                            through
+                                            convergence of various nutrition-related schemes.<br>
+                                            <b style="font-size:18px">Target Groups:</b>
+                                            <li>Children (0-6 years)</li>
+                                            <li>Adolescent girls</li>
+                                            <li>Pregnant women</li>
+                                            <li>Lactating mothers</li><br>
+
+                                            <b style="font-size:18px">Goals & Targets:</b> Reduce stunting,
+                                            under-nutrition,
+                                            anemia, and low birth
+                                            weight by:
+                                            2% per annum (stunting, under-nutrition, low birth weight)
+                                            3% per annum (anemia in young children, women, and adolescent girls)
+                                            Target: Reduce stunting from 38.4% (NFHS-4) to 25% by 2022 (Mission 25 by
+                                            2022).
+                                            Improve nutritional status in a time-bound manner.<br><br>
+
+                                            <b style="font-size:18px">Key Features & Strategies:</b>
+                                            <li>Multi-ministerial & Convergence Approach: Integrates schemes
+                                                directly/indirectly affecting nutrition (e.g., ICDS, Mid-Day Meal, NHM).
+                                                Focus on synergy and coordination to improve delivery.</li>
+
+                                            <li>Nutritional Strategies & Interventions: IYCF (Infant & Young Child
+                                                Feeding), Food & Nutrition (diet diversity, food fortification),
+                                                Immunization,
+                                                Institutional Delivery, WASH (Water, Sanitation & Hygiene), De-worming,
+                                                ORS-Zinc,
+                                                Dietary Diversification, Adolescent Nutrition, Maternal Health &
+                                                Nutrition,
+                                                Early
+                                                Childhood Development (ECD)/Early Childhood Care & Education (ECCE),
+                                                ICT-RTM
+                                                (Real-Time Monitoring via Poshan Tracker), Capacity Building & Training
+                                                of
+                                                Anganwadi
+                                                Workers.</li>
+
+                                            <li>Technology Integration & Monitoring:<br>
+                                                <ul>
+                                                    <li><b>Poshan Tracker:</b> ICT-enabled platform for real-time
+                                                        monitoring of
+                                                        supplementary
+                                                        nutrition delivery.</li>
+                                                    <li><b>Growth Monitoring Devices (GMDs):</b> Infantometer,
+                                                        Stadiometer,
+                                                        Weighing Scale
+                                                        for
+                                                        Mother & Infant at Anganwadi Centres.
+                                                        Sectoral Evaluation by DMEO, NITI Aayog found satisfactory
+                                                        performance
+                                                        in relevance,
+                                                        sustainability, and equity.</li>
+                                                    <li><b>Integration with Mission Saksham Anganwadi & Poshan 2.0
+                                                            (2021-22):</b>
+                                                        Focus on diet diversity, food fortification, traditional
+                                                        knowledge, and
+                                                        millets.
+                                                        Use of millets in Hot Cooked Meals & Take Home Rations at
+                                                        Anganwadi
+                                                        Centres.
+                                                        Only fortified rice is supplied to States/UTs.
+                                                        Strengthened nutritional quality, testing, and delivery
+                                                        mechanisms.</li>
+                                                </ul>
+                                            </li>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex justify-content-center">
+                                    <img src="poshan abhiyaan.jpg" class="img-fluid rounded-end" alt="Scheme 1"
+                                        style="max-height: 300px;">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card w-100 mb-3">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-4 d-flex justify-content-center">
+                                        <img src="aay.png" class="img-fluid rounded-start" alt="Scheme 2"
+                                            style="max-height: 280px;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h3 class="card-title fs-1">
+                                                <a href="https://www.bankbazaar.com/ration-card/antyodaya-anna-yojana.html"
+                                                    target="_blank" class="text-decoration-none text-black">
+                                                    Antyodaya Anna Yojana (AAY)
+                                                </a>
+                                            </h3>
+                                            <p class="card-text">
+                                                <b style="font-size:18px">Launch Date: </b>25th December 2000<br>
+                                                <b style="font-size:18px">Ministry: </b>Ministry of Consumer Affairs,
+                                                Food & Public Distribution, Government of India<br>
+                                                <b style="font-size:18px">Developed By: </b>N. Sri Vishnu, former Union
+                                                Food and Civil Supplies
+                                                Minister<br>
+                                                <b style="font-size:18px">First Implemented In: </b> Rajasthan<br>
+                                                <b style="font-size:18px">Objective: </b>
+                                                <li>To ensure food security for the poorest of the poor.</li>
+                                                <li>To provide subsidized food grains and essential commodities.</li>
+                                                <li>To reduce hunger and malnutrition in India.</li>
+                                                <li>To strengthen the Targeted Public Distribution System (TPDS).</li>
+                                                <br>
+                                                <b style="font-size:18px">Target Groups (Beneficiaries): </b>
+                                                <li>Rural Beneficiaries: Families with an annual income below Rs.
+                                                    15,000,
+                                                    Small & marginal farmers,
+                                                    Landless agricultural laborers,
+                                                    Physically handicapped persons,
+                                                    Old-age pensioners (60+ years),
+                                                    Destitute widows,
+                                                    Rural artisans/craftsmen (potters, weavers, blacksmiths,
+                                                    carpenters),
+                                                    Tribal families in remote areas.</li>
+                                                <li>Urban Beneficiaries: Slum dwellers.
+                                                    Daily wage laborers (rickshaw pullers, porters, rag pickers,
+                                                    cobblers),
+                                                    Domestic workers,
+                                                    Fruit and flower vendors,
+                                                    Construction workers,
+                                                    Households headed by widows, disabled persons, or senior citizens
+                                                    (60+ years) with no social support.</li><br>
+                                                <b style="font-size:18px">Key Features: </b>
+                                                <li>Food grain subsidies:
+                                                    <ul>
+                                                        <li>Wheat – Rs. 2 per kg</li>
+                                                        <li>Rice – Rs. 3 per kg</li>
+                                                        <li>Sugar – Rs. 18.50 per kg (1 kg per family per month)</li>
+                                                        <li>Each family gets 35 kg of food grains per month.</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Special Ration Cards:
+                                                    Different colors for different states (e.g., Yellow Card in Kerala,
+                                                    Pink Card in Telangana).</li>
+                                                <li>Monthly food grain allocation: 8.51 lakh tonnes.</li><br>
+                                                <b style="font-size:18px">Expansion & Impact:</b>
+                                                Initially covered 1 crore families,
+                                                Later expanded to 1.5 crore families (23% of BPL families),
+                                                Further expanded to 3 crore families, benefiting 15 crore people,
+                                                Total monthly food grain distribution increased from 62.5 lakh tonnes to
+                                                87.5 lakh tonnes,
+                                                AAY budget increased by Rs. 4,000 crores to meet rising demand.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card w-100 mb-3">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h3 class="card-title fs-1">
+                                                <a href="https://www.ketto.org/blog/mid-day-meal-scheme" target="_blank"
+                                                    class="text-decoration-none text-black">
+                                                    PM POSHAN (Mid Day Meals)
+                                                </a>
+                                            </h3>
+                                            <p class="card-text">
+                                                <b style="font-size:18px">Launched: </b>15th August 1995<br>
+                                                <b style="font-size:18px">Ministry: </b>Ministry of Education (formerly
+                                                Ministry of Human Resource Development)<br>
+                                                <b style="font-size:18px">Renamed: </b>In September 2021, it was renamed
+                                                PM-POSHAN (Pradhan Mantri Poshan Shakti Nirman)<br>
+                                                <b style="font-size:18px">Duration: </b>2021-22 to 2025-26 (Current
+                                                phase)<br>
+                                                <b style="font-size:18px">Budget: </b>₹1,30,794.90 crore<br>
+                                                <b style="font-size:18px">Objectives: </b>
+                                                <li>To increase enrollment of disadvantaged children in schools.</li>
+                                                <li>To boost attendance and retention rates.</li>
+                                                <li>To provide nutritional support to school children, especially in
+                                                    drought-affected areas.</li>
+                                                <li>To reduce classroom hunger and support cognitive development.</li>
+                                                <li>To empower women by providing cooking-related employment.</li>
+                                                <li>To improve socialization among children by serving meals in a
+                                                    communal setting.</li>
+                                                <br>
+                                                <b style="font-size:18px">Target Groups: </b>Children from Class 1 to 8
+                                                studying in:
+                                                Government schools,
+                                                Government-aided schools,
+                                                Local body schools,
+                                                Education Guarantee Scheme (EGS) & Alternative Innovative Education
+                                                (AIE) centers,
+                                                Madrasas & Maqtabs supported under Sarva Shiksha Abhiyan (SSA),
+                                                Recently, it has been extended to pre-primary students (Bal
+                                                Vatikas).<br>
+                                                <b style="font-size:18px">Nutritional Norms: </b>
+                                                <li>Primary Students (Classes 1-5):
+                                                    <ul>
+                                                        <li>450 calories</li>
+                                                        <li>12g protein</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Upper Primary Students (Classes 6-8):
+                                                    <ul>
+                                                        <li>700 calories</li>
+                                                        <li>20g protein</li>
+                                                    </ul>
+                                                </li>
+                                                <li>Micronutrients, including iron, folic acid, and vitamin A, are
+                                                    provided under the School Health Programme.</li>
+                                                <br>
+                                                <b style="font-size:18px">Key Features: </b>
+                                                <li>World’s largest school meal program (Covers 11.80 crore children
+                                                    across 11.20 lakh schools as per 2021-22).</li>
+                                                <li>Cost-sharing: Centrally Sponsored Scheme (60% Centre, 40% States).
+                                                </li>
+                                                <li>First State to Implement: Tamil Nadu.</li>
+                                                <li>Public-Private Partnership (PPP): NGOs like Akshaya Patra assist in
+                                                    meal preparation and distribution.</li>
+                                                <li>Special Provisions:
+                                                    Cooking cost assistance,
+                                                    Transportation subsidy for food grains,
+                                                    Kitchen-cum-stores and kitchen devices for hygienic food
+                                                    preparation,
+                                                    Summer meal provision in drought-affected areas.</li>
+                                                <li>Monitoring & Evaluation:
+                                                    Accredited labs test meal quality monthly,
+                                                    School Management Committees (SMCs) oversee implementation,
+                                                    Food allowances provided if meals are not served for 3 consecutive
+                                                    days.</li>
+                                                <br>
+                                                <b style="font-size:18px">Recent Developments: </b>
+                                                <li>Proposal to include milk in the mid-day meal.</li>
+                                                <li>Increased community participation in monitoring and execution.</li>
+                                                <li>Digital tracking for transparency & efficiency.</li><br>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 d-flex justify-content-center">
+                                        <img src="pmposhan.png" class="img-fluid rounded-end" alt="Scheme 3"
+                                            style="max-height: 300px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <div class="card">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="nfsm.png" class="img-fluid rounded-start" alt="Scheme 4">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-1">National Food Security Mission (NFSM)</h5>
+                                            <p class="card-text">
+                                                <b style="font-size:18px">Launched By: </b> Government of India<br>
+                                                <b style="font-size:18px">Launch Date: </b> 2007-08<br>
+                                                <b style="font-size:18px">Implemented In: </b> 638 districts across 29
+                                                states<br>
+                                                <b style="font-size:18px">Ministry: </b> Ministry of Agriculture &
+                                                Farmers Welfare<br>
+                                                <b style="font-size:18px">Target Groups: </b> Small & marginal farmers,
+                                                SC/ST farmers, women farmers<br>
+                                                <b style="font-size:18px">Key Objectives: </b><br>
+                                                <li>Increase production and productivity of rice, wheat, pulses, and
+                                                    coarse cereals sustainably.</li>
+                                                <li>Restore soil fertility and productivity at the individual farm
+                                                    level.</li>
+                                                <li>Enhance farm income to boost farmers’ confidence.</li><br>
+                                                <b style="font-size:18px">Implementation & Achievements: </b><br>
+                                                <li>During the 11th Five-Year Plan, NFSM achieved an increase of 20
+                                                    million metric tonnes (MT) of food grains.</li>
+                                                <li>Continued during the 12th Five-Year Plan (2012-17) with a target of
+                                                    25 million MT of additional food grain production.</li>
+                                                <li>Coarse cereals included in the mission from 2014-15.</li>
+                                                <li>Between 2017-18 and 2019-20, NFSM aimed to increase food grain
+                                                    production by 13 million MT.</li>
+                                                <li>In 2017-18, India achieved a record food grain production of 285.01
+                                                    million MT.</li><br>
+                                                <b style="font-size:18px">Key Components of NFSM:</b><br>
+                                                <li>NFSM-Food Grain Crops (Rice, Wheat, Pulses)</li>
+                                                <li>NFSM-Coarse Cereals</li>
+                                                <li>NFSM-Commercial Crops (Sugarcane, Cotton, Jute)</li>
+                                                <li>NFSM-Oilseeds & Oil Palm</li>
+                                                <li>NFSM-Seed Village Programme</li>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Targets Tab -->
+        <div class="tab-pane fade" id="targets" role="tabpanel" aria-labelledby="targets-tab">
+            <div class="container">
+                <div class="row">
+                    <!-- First Row -->
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.1.png" alt="Food Security" class="target-img">
+                            <p><b>UNIVERSAL ACCESS TO SAFE AND NUTRITIOUS FOOD</b><br><br>
+                                By 2030, end hunger and ensure access by all people, in particular the poor and people
+                                in vulnerable situations, including infants, to safe, nutritious and sufficient food all
+                                year round.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.2.png" alt="Malnutrition" class="target-img">
+                            <p><b>END ALL FORMS OF MALNUTRITION</b><br><br>
+                                By 2030, end all forms of malnutrition, including achieving, by 2025, the
+                                internationally agreed targets on stunting and wasting in children under 5 years of
+                                age, and address the nutritional needs of adolescent girls, pregnant and lactating women
+                                and older persons.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.3.png" alt="Small-scale Farmers" class="target-img">
+                            <p><b>DOUBLE THE PRODUCTIVITY AND INCOMES OF SMALL-SCALE FOOD PRODUCERS</b><br><br>
+                                By 2030, double the agricultural productivity and incomes of small-scale food producers,
+                                in particular women, indigenous peoples, family farmers, pastoralists and fishers,
+                                including through secure and equal access to land, other productive resources and
+                                inputs, knowledge, financial services, markets and opportunities for value addition
+                                and non-farm employment.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.4.png" alt="Sustainable Farming" class="target-img">
+                            <p><b>SUSTAINABLE FOOD PRODUCTION AND RESILIENT AGRICULTURAL PRACTICES</b><br><br>
+                                By 2030, ensure sustainable food production systems and implement resilient agricultural
+                                practices that increase productivity and production, that help maintain ecosystems, that
+                                strengthen capacity for adaptation to climate change, extreme weather, drought, flooding
+                                and other disasters and that progressively improve land and soil quality.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <!-- Second Row -->
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.5.png" alt="Genetic Diversity" class="target-img">
+                            <p><b>MAINTAIN THE GENETIC DIVERSITY IN FOOD PRODUCTION</b><br><br>
+                                By 2020, maintain the genetic diversity of seeds, cultivated plants and farmed and
+                                domesticated animals and their related wild species, including through soundly managed
+                                and diversified seed and plant banks at the national, regional and international levels,
+                                and promote access to and fair and equitable sharing of benefits arising from the
+                                utilization of genetic resources and associated traditional knowledge, as
+                                internationally agreed.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.6.png" alt="Agricultural Research" class="target-img">
+                            <p><b>INVEST IN RURAL INFRASTRUCTURE, AGRICULTURAL RESEARCH, TECHNOLOGY AND GENE
+                                    BANKS</b><br><br>
+                                Increase investment, including through enhanced international cooperation, in rural
+                                infrastructure, agricultural research and extension services, technology development
+                                and plant and livestock gene banks in order to enhance agricultural productive capacity
+                                in developing countries, in particular least developed countries.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.7.png" alt="Trade Restrictions" class="target-img">
+                            <p><b>PREVENT AGRICULTURAL TRADE RESTRICTIONS, MARKET DISTORTIONS AND EXPORT
+                                    SUBSIDIES</b><br><br>
+                                Correct and prevent trade restrictions and distortions in world agricultural markets,
+                                including through the parallel elimination of all forms of agricultural export
+                                subsidies and all export measures with equivalent effect, in accordance with the mandate
+                                of
+                                the Doha Development Round.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="target-box">
+                            <img src="2.8.png" alt="Stable Markets" class="target-img">
+                            <p><b>ENSURE STABLE FOOD COMMODITY MARKETS AND TIMELY ACCESS TO INFORMATION</b><br><br>
+                                Adopt measures to ensure the proper functioning of food commodity markets and their
+                                derivatives and facilitate timely access to market information, including on food
+                                reserves, in order to help limit extreme food price volatility.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- Closing div for Targets tab -->
+
+        <!-- Things to Do Tab -->
+        <div class="tab-pane fade" id="thingstodo" role="tabpanel" aria-labelledby="thingstodo-tab">
+            <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                    <img src="bulb.png" alt="PDS" width="30" height="30" class="me-2">
+                    Find a Goal 2 charity you want to support. Any donation, big or small, can make a difference!
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                    <img src="bulb.png" alt="Fortified Rice" width="30" height="30" class="me-2">
+                    Buy local and in-season food. Try to grow some of your own food.
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                    <img src="bulb.png" alt="Sustainable Agriculture" width="30" height="30" class="me-2">
+                    Don’t waste food. Freeze fresh produce and leftovers if you don’t have the chance to eat them
+                    before they go bad.
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                    <img src="bulb.png" alt="Education" width="30" height="30" class="me-2">
+                    Buy Funny Fruit—many fruits and vegetables are thrown out because their size, shape, or color
+                    are not “right”. Buying these perfectly good funny fruit, utilizes food that might otherwise go to
+                    waste.
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                    <img src="bulb.png" alt="Healthcare" width="30" height="30" class="me-2">
+                    Consume less meat and become vegetarian for one day a week. The meat production industry has a
+                    huge impact on the environment.
+                </li>
+                <li class="d-flex align-items-center">
+                    <img src="bulb.png" alt="Tourism" width="30" height="30" class="me-2">
+                    Take action with the World’s Largest Lesson on Goal 2.
+                </li>
+            </ul>
+        </div> <!-- Closing div for Things to Do tab -->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            function scrollToContent() {
+                const contentSection = document.getElementById("content-section");
+                if (contentSection) {
+                    contentSection.scrollIntoView({ behavior: "smooth" });
+                }
+            }
+        </script>
+
+        <!-- Contact Section -->
+        <section id="contact" class="container mt-5">
+            <h2 class="text-center mb-4">Contact Us</h2>
+
+            <div class="row align-items-center">
+                <!-- Left Side - Personal Details -->
+                <div class="col-md-5 text-center">
+                    <img src="contact.jpg" alt="Your Photo" class="mb-3" width="260" height="280">
+                    <h4>Grandhi Vyshnavi</h4>
+                    <p><b>Reg No:</b> 21MIS1130</p>
+                    <p><b>Email:</b> grandhi.vyshnavi2021@vitstudent.ac.in</p>
+                    <p><b>Phone:</b> +91 8328589257</p>
+                </div>
+
+                <!-- Right Side - Contact Form -->
+                <div class="col-md-7">
+                    <form>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Your Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="4"
+                                placeholder="Enter your message"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-green w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute("href"));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 50, // Adjust for navbar height
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+        </script>
+
+
+        <!-- References Section -->
+        <div class="references mt-5" id="references">
+            <h2>References</h2>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="https://pib.gov.in/PressReleasePage.aspx?PRID=1910409" target="_blank"
+                        class="text-decoration-none text-black">
+                        POSHAN Abhiyaan (National Nutrition Mission)
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://www.bankbazaar.com/ration-card/antyodaya-anna-yojana.html" target="_blank"
+                        class="text-decoration-none text-black">
+                        Antyodaya Anna Yojana (AAY)
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://www.ketto.org/blog/mid-day-meal-scheme" target="_blank"
+                        class="text-decoration-none text-black">
+                        PM POSHAN (Mid Day Meals)
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://www.indiafilings.com/learn/national-food-security-mission/" target="_blank"
+                        class="text-decoration-none text-black">
+                        National Food Security Mission
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://www.globalgoals.org/goals/2-zero-hunger/" target="_blank"
+                        class="text-decoration-none text-black">
+                        Global Goals
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="https://sdgs.un.org/goals/goal2#progress_and_info" target="_blank"
+                        class="text-decoration-none text-black">
+                        United Nation SDG
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <footer class="text-center p-3 bg-light">
+            <p>&copy; 2024 SDG Goal 2 | All Rights Reserved</p>
+            <p>Grandhi Vyshnavi - 21MIS1130</p>
+        </footer>
+
+
+
+</body>
+
+</html>
